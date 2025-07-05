@@ -42,3 +42,25 @@ class Solution(object):
             if num == count:
                 res = max(res, num)
         return res
+
+
+# Second solution without using built-in Counter
+class Solution(object):
+    def findLucky(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        freq = {}
+
+        for num in arr:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+        res = -1
+
+        for num in freq:
+            if freq[num] == num:
+                res = max(res, num)
+        return res
